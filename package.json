@@ -1,7 +1,7 @@
 {
-  "name": "website-nodejs",
+  "name": "website-sederhana",
   "version": "1.0.0",
-  "description": "Website sederhana dengan Node.js",
+  "description": "Website sederhana Node.js",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
