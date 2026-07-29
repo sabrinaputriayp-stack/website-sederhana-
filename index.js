@@ -3,16 +3,20 @@ const path = require('path');
 
 const app = express();
 
+// Sajikan file statis dari folder public
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Halaman utama
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// Halaman tentang
 app.get('/tentang', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'tentang.html'));
 });
 
+// API
 app.get('/api/info', (req, res) => {
   res.json({
     nama: 'Website Sederhana',
@@ -22,7 +26,13 @@ app.get('/api/info', (req, res) => {
   });
 });
 
+// Export untuk Vercel
+module.exports = app;
+
+// Untuk local development
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log('Server berjalan di port ' + PORT);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log('Server berjalan di port ' + PORT);
+  });
+}
